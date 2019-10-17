@@ -9,7 +9,7 @@ namespace Task_1.FileHandling
 {
     public interface IFileHandler
     {
-        IEnumerable<HandleResult> Handle(FileInfo file);
-        bool CanHandle(FileInfo file);
+        void Handle(string fileContent, string fileName);
+        bool CanHandle(string fileContent);
     }
 }

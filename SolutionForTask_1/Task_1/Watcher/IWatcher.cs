@@ -10,6 +10,6 @@ namespace Task_1.Watcher
     public interface IWatcher : IDisposable
     {
         void Start();
-        void Add(IFileHandler fileHandler);
+        void AddHandler(IFileHandler fileHandler);
     }
 }

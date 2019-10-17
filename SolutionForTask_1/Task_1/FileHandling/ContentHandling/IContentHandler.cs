@@ -10,6 +10,6 @@ namespace Task_1.FileHandling.ContentHandling
     public interface IContentHandler
     {
         string HandlerName { get; }
-        string Handle(FileInfo file);
+        string Handle(string fileContent);
     }
 }
