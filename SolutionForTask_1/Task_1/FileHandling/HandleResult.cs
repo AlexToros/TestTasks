@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Task_1.FileHandling
 {
+    /// <summary>
+    /// Результат работы обработчика контента
+    /// </summary>
     public class HandleResult
     {
         public string FileName { get; set; }

@@ -9,6 +9,9 @@ namespace Task_1.Config
 {
     interface IConfigurator
     {
+        /// <summary>
+        /// Возвращает экземпляр <code>IWatcher</code> с конкретными зависимостями
+        /// </summary>
         IWatcher GetWatcher();
     }
 }
