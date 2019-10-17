@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<metroStructure>
+  <lines>
+    <line id="e79a8a29-2f00-4868-ad1d-f33144053dd0" color="#ffffff" name="Name">
+      <station id="e0192e9c-6a7b-4916-b0de-970dac3f1372" name="Name" Enable="true" />
+      <station id="b552f44e-061c-4cae-a51b-200f8b061d18" name="Name" Enable="true" />      
+    </line>
+    <line id="179a8a29-2f00-4868-ad1d-f33143053dd0" color="#ffaaff" name="Name">
+      <station id="20192e9c-6a7b-4916-b0d1-970dac3f1372" name="Name" Enable="false" />
+      <station id="3552f44e-061c-4cae-321b-200f8b061d18" name="Name" Enable="true" />
+    </line>
+  </lines>
+  <transfers>
+    <!--Здесь описаны как пересадки так и переезды-->
+    <transfer from="e0192e9c-6a7b-4916-b0de-970dac3f1372" to="b552f44e-061c-4cae-a51b-200f8b061d18" Duration="120" Enable="true" />
+    <transfer from="b552f44e-061c-4cae-a51b-200f8b061d18" to="e0192e9c-6a7b-4916-b0de-970dac3f1372" Duration="120" Enable="true" />
+    <transfer from="e0192e9c-6a7b-4916-b0de-970dac3f1372" to="20192e9c-6a7b-4916-b0d1-970dac3f1372" Duration="120" Enable="false" />
+    <transfer from="3552f44e-061c-4cae-321b-200f8b061d18" to="b552f44e-061c-4cae-a51b-200f8b061d18" Duration="230" Enable="true" />
+    <transfer from="b552f44e-061c-4cae-a51b-200f8b061d18" to="3552f44e-061c-4cae-321b-200f8b061d18" Duration="184" Enable="true" />
+  </transfers>
+</metroStructure>
