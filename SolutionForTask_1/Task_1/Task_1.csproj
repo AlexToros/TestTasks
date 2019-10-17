@@ -44,14 +44,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileHandling\BaseFileHandler.cs" />
+    <Compile Include="Config\MainConfigurator.cs" />
+    <Compile Include="Config\IConfigurator.cs" />
+    <Compile Include="FileHandling\ContentHandling\BraceChecker.cs" />
+    <Compile Include="FileHandling\ContentHandling\PunctuationCounter.cs" />
+    <Compile Include="FileHandling\DefaultFileHandler.cs" />
+    <Compile Include="FileHandling\FileHandler.cs" />
+    <Compile Include="FileHandling\ContentHandling\DivCounter.cs" />
     <Compile Include="FileHandling\ContentHandling\IContentHandler.cs" />
     <Compile Include="FileHandling\HandleResult.cs" />
     <Compile Include="FileHandling\IFileHandler.cs" />
+    <Compile Include="Output\FileOutput.cs" />
     <Compile Include="Output\IOutputWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Watcher\BaseWatcher.cs" />
+    <Compile Include="Watcher\CommonWatcher.cs" />
     <Compile Include="Watcher\IWatcher.cs" />
   </ItemGroup>
   <ItemGroup>

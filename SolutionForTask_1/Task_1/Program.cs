@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Task_1.Config;
+using Task_1.Watcher;
 
 namespace Task_1
 {
@@ -12,15 +14,14 @@ namespace Task_1
     {
         static void Main(string[] args)
         {
+            IConfigurator configurator = new MainConfigurator();
+            IWatcher watcher = configurator.GetWatcher();
 
-            FileSystemWatcher fsw = new FileSystemWatcher(ConfigurationManager.AppSettings["ObservableDirectory"]);
-            fsw.Created += Fsw_Created;
-        }
+            watcher.Start();
 
-        private static void Fsw_Created(object sender, FileSystemEventArgs e)
-        {
-            FileInfo fi = new FileInfo(e.FullPath);
-
+            Console.WriteLine("FileWatcher started.");
+            Console.WriteLine("Press 'q' to end.");
+            while (Console.Read() != 'q') ;
         }
     }
 }
