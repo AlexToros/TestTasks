@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,14 @@ namespace Task_1.Config
         {
             string outputPath = ConfigurationManager.AppSettings["OutputPath"];
             string pathToWatch = ConfigurationManager.AppSettings["ObservableDirectory"];
+
+            if (string.IsNullOrWhiteSpace(outputPath))
+                throw new ArgumentException("В файле конфигурации не задан параметр OutputPath");
+
+            if (string.IsNullOrWhiteSpace(pathToWatch))
+                throw new ArgumentException("В файле конфигурации не задан ObservableDirectory");
+
+            TryAccsess(outputPath);
 
             var output = new FileOutput(outputPath);
             var watcher = new CommonWatcher(pathToWatch);            
@@ -38,9 +47,18 @@ namespace Task_1.Config
             cssHandler.HandleComplete += output.Write;
 
             watcher.AddHandler(httpHandler);
+            watcher.AddHandler(cssHandler);
             watcher.DefaultHandler = defaultHandler;
 
             return watcher;
+        }
+
+        private void TryAccsess(string outputPath)
+        {
+            using (StreamWriter sw = new StreamWriter(outputPath, true, Encoding.Default))
+            {
+                sw.Write("");
+            }
         }
     }
 }

@@ -20,7 +20,10 @@ namespace Task_1.Output
 
         public void Write(HandleResult output)
         {
-            File.AppendAllText(path, output.ToString());
+            using (StreamWriter sw = new StreamWriter(path, true, Encoding.Default))
+            {
+                sw.WriteLine(output);
+            }
         }
     }
 }

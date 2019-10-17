@@ -14,14 +14,22 @@ namespace Task_1.Watcher
     {
         private FileSystemWatcher watcher;
         private List<IFileHandler> handlers;
-      
+        
         public IFileHandler DefaultHandler { get; set; }
 
         public CommonWatcher(string path)
         {
-            handlers = new List<IFileHandler>();
-            watcher = new FileSystemWatcher(path);
-            ConfigureWatcher();
+            try
+            {
+                handlers = new List<IFileHandler>();
+                watcher = new FileSystemWatcher(path);
+                ConfigureWatcher();
+            }
+            catch (ArgumentException ex)
+            {
+                var e = new ArgumentException($"Проблемы с доступом к папке {path}", ex);
+                throw e;
+            }
         }
 
         protected virtual void ConfigureWatcher()
@@ -34,11 +42,12 @@ namespace Task_1.Watcher
         {
             Task.Run(() =>
                {
+                   Task.Delay(50).Wait();
                    string fileContent = File.ReadAllText(e.FullPath);
                    bool wasHandled = false;
                    foreach (var h in handlers)
                    {
-                       bool canHandle = h.CanHandle(Path.GetExtension(fileContent));
+                       bool canHandle = h.CanHandle(Path.GetExtension(e.Name));
                        wasHandled |= canHandle;
                        if (canHandle)
                            h.Handle(fileContent, e.Name);

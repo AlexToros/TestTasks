@@ -14,14 +14,40 @@ namespace Task_1
     {
         static void Main(string[] args)
         {
-            IConfigurator configurator = new MainConfigurator();
-            IWatcher watcher = configurator.GetWatcher();
+            IWatcher watcher = null;
+            try
+            {
+                IConfigurator configurator = new MainConfigurator();
+                watcher = configurator.GetWatcher();
 
-            watcher.Start();
+                watcher.Start();
 
-            Console.WriteLine("FileWatcher started.");
+                Console.WriteLine("FileWatcher started.");
+                Console.WriteLine("Press 'q' to end.");
+                while (Console.ReadKey().KeyChar != 'q') ;
+            }
+            catch (ArgumentException ex)
+            {
+                ExceptionHandle(ex);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                ExceptionHandle(ex);
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                ExceptionHandle(ex);
+            }
+            finally
+            {
+                watcher?.Dispose();
+            }
+        }
+        private static void ExceptionHandle(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
             Console.WriteLine("Press 'q' to end.");
-            while (Console.Read() != 'q') ;
+            while (Console.ReadKey().KeyChar != 'q') ;
         }
     }
 }
