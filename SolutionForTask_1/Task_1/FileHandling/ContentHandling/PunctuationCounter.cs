@@ -12,7 +12,7 @@ namespace Task_1.FileHandling.ContentHandling
 
         public string Handle(string fileContent)
         {
-            return fileContent.Count(Char.IsPunctuation).ToString();
+            return $"{fileContent.Count(Char.IsPunctuation)}";
         }
     }
 }

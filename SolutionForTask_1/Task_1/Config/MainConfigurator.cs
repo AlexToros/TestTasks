@@ -29,7 +29,7 @@ namespace Task_1.Config
 
             var output = new FileOutput(outputPath);
             var watcher = new CommonWatcher(pathToWatch);            
-            var httpHandler = new FileHandler(".http");
+            var httpHandler = new FileHandler(".html");
             var cssHandler = new FileHandler(".css");
             var defaultHandler = new DefaultFileHandler();
 

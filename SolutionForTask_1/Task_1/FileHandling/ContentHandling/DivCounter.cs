@@ -10,13 +10,20 @@ namespace Task_1.FileHandling.ContentHandling
 {
     public class DivCounter : IContentHandler
     {
-        private readonly string divPattern = "";
-
         public string HandlerName => "Подсчет количества блоков div";
 
         public string Handle(string fileContent)
         {
-            return $"Количество тегов div: {Regex.Match(fileContent, divPattern).Groups[1].Captures.Count}";
+            return $"{divCount(fileContent)}";
+        }
+
+        private int divCount(string fileContent)
+        {
+            int count = 0;
+            int indx = -1;
+            while ((indx = fileContent.IndexOf("<div>", indx + 1)) != -1)
+                count++;
+            return count;
         }
     }
 }
